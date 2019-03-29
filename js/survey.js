@@ -1,8 +1,6 @@
 var pos = 0, test, test_status, question, options, chA, chB, chC;
 var result = 0;
 
-
-
 // this is a multidimensional array - 4 inner array elements with 4 elements inside them
 
 var questions = [
@@ -12,20 +10,20 @@ var questions = [
   ["Which show is bingeworthy?", "Game of Thrones", "The Walking Dead", "Fuller House"]
   ];
 
-
 // this get function is a shortcut for the getElementByID method
 
 function get(ix){
   return document.getElementById(ix);
 }
 
-
 function writeQuestion(){
   test = get("test");
   yoursign = "Reserved for Disabled Parking";
   if(pos >= questions.length){
     test.innerHTML = "<h2>Thank You for Taking This Survey</h2>";
-	if (result < 5) {
+	if (result < 1) {
+	  yoursign = "Reserved for Disabled Parking";
+	} else if (result < 5) {
 	  yoursign = "Stop";
 	} else if (result < 9) {
 	  yoursign = "Proceed With Caution";
@@ -48,7 +46,6 @@ function writeQuestion(){
   chC = questions[pos][3];
   test.innerHTML = "<h3>"+question+"</h3>";
 
-
   // append to the data string started on the line above - options for asked question
 
   test.innerHTML += "<input type='radio' name='options' value='A'> "+chA+"<br>";
@@ -67,7 +64,6 @@ function checkReply(){
       result += i+1;
     }
   }
-
 
   pos++;
 
